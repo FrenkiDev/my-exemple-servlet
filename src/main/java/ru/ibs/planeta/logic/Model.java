@@ -1,4 +1,4 @@
-package ru.ibs.planeta.myexempleservlet.logic;
+package ru.ibs.planeta.logic;
 
 import java.io.Serializable;
 import java.util.HashMap;

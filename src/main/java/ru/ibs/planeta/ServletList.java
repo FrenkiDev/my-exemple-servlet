@@ -1,4 +1,4 @@
-package ru.ibs.planeta.myexempleservlet;
+package ru.ibs.planeta;
 
 import javax.servlet.annotation.WebServlet;
 
