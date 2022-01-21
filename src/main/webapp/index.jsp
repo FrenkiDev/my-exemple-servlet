@@ -5,9 +5,8 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+<h1>Домашняя страница по работе с пользователями</h1>
+Введите ID пользователя (0 - для вывода всего списка пользователей
+<br>
 </body>
 </html>
