@@ -18,6 +18,7 @@ public class Model implements Serializable {
         model.put(1, new User("Name_1", "Surname_1", 15.00));
         model.put(2, new User("Name_2", "Surname_2", 5.00));
         model.put(3, new User("Name_3", "Surname_3", 150.00));
+        model.put(4, new User("Name_4", "Surname_4", 10.00));
     }
 
     public void addUser(User user, int id){
