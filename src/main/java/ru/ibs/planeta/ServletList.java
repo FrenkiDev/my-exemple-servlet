@@ -19,7 +19,7 @@ public class ServletList extends HttpServlet {
             "<h3>Доступные пользователи:</h3><br/>" +
             "ID пользользователя: " +
             "<ul>";
-    private String htmlList = "<li>%s</li>" +
+    private final String htmlList = "<li>%s</li>" +
             "<ul>" +
             "<li> Имя: %s</li>" +
             "<li> Фамилия: %s</li>" +
@@ -28,7 +28,7 @@ public class ServletList extends HttpServlet {
     private final String htmlGoHome = "</ul><a href=\"index.jsp\">Домой</a></html>";
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter pw = resp.getWriter();
 
@@ -46,6 +46,31 @@ public class ServletList extends HttpServlet {
             }
 
             pw.print(htmlGoHome);
+        }else if(id > 0){
+            if(id > model.getUserList().size()){
+                pw.print("<html>"
+                        + "<h3>Такого пользователя нет</h3>"
+                        + htmlGoHome
+                        + "</html>");
+            }else{
+                User userById = model.getUser(id);
+                pw.print("<html>"
+                        + "<h3>Запрошенный пользователь:</h3>"
+                        + "<br/>"
+                        + String.format(htmlList
+                        , id
+                        , userById.getName()
+                        , userById.getSalary()
+                        , userById.getSalary())
+                        + "<br/>"
+                        + htmlGoHome
+                        + "</html>");
+            }
+        } else{
+            pw.print("<html>"
+                    + "<h3>ID Пользователя должно быть больше нуля</h3>"
+                    + htmlGoHome
+                    + "</html>");
         }
     }
 }
