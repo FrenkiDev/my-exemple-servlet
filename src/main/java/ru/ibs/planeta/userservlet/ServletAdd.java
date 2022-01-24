@@ -46,7 +46,7 @@ public class ServletAdd extends HttpServlet {
         User user = new User(name, surname, salary);
         model.addUser(user, counter.getAndIncrement());
 
-        resp.setContentType("application/json;charset=utf-8");
+        resp.setContentType("application/json;");
         PrintWriter pw = resp.getWriter();
 
         pw.print(gson.toJson(model.getUserList()));

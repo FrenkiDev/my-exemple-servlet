@@ -1,9 +1,8 @@
-package ru.ibs.planeta;
+package ru.ibs.planeta.calcservlet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import ru.ibs.planeta.logic.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

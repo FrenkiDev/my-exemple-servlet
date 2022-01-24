@@ -1,4 +1,4 @@
-package ru.ibs.planeta;
+package ru.ibs.planeta.calcservlet;
 
 import lombok.Getter;
 import lombok.Setter;
