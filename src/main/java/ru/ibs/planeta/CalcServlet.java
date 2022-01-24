@@ -3,7 +3,6 @@ package ru.ibs.planeta;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import ru.ibs.planeta.logic.Model;
 import ru.ibs.planeta.logic.User;
 
 import javax.servlet.ServletException;
@@ -15,38 +14,37 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = "/delete")
-public class ServletDelete extends HttpServlet {
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    Model model = Model.getInstance();
+@WebServlet(urlPatterns = "/calc")
+public class CalcServlet extends HttpServlet {
+    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         StringBuffer bf = new StringBuffer();
         String line;
 
-        try {
+        try{
             BufferedReader reader = req.getReader();
-            while ((line = reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null){
                 bf.append(line);
             }
-        } catch (IOException e) {
+        }catch (IOException e){
             System.out.println("Error: " + e.getMessage());
         }
         JsonObject jObject = gson.fromJson(String.valueOf(bf), JsonObject.class);
 
-        req.setCharacterEncoding("UTF-8");
+        req.setCharacterEncoding("UTF-8");;
 
         resp.setContentType("application/json;charset=utf-8");
         PrintWriter pw = resp.getWriter();
 
-        int id = jObject.get("id").getAsInt();
-        User userById = model.getUser(id);
-        if (userById == null) {
-            pw.print(gson.toJson("Такого пользователя нет"));
-        } else {
-            model.getUserList().remove(id);
-        }
-        pw.print(gson.toJson(model.getUserList()));
+        double a = jObject.get("a").getAsDouble();
+        double b = jObject.get("b").getAsDouble();
+        String math = jObject.get("math").getAsString();
+
+        Calc tmp = new Calc();
+        tmp.calculate(a, b, math);
+
+        pw.print(gson.toJson(tmp));
     }
 }

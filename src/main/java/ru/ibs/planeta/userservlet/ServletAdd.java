@@ -1,4 +1,4 @@
-package ru.ibs.planeta;
+package ru.ibs.planeta.userservlet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

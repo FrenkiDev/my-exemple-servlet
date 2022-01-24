@@ -1,4 +1,4 @@
-package ru.ibs.planeta;
+package ru.ibs.planeta.userservlet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import ru.ibs.planeta.logic.Model;
 import ru.ibs.planeta.logic.User;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,13 +15,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = "/update")
-public class ServletUpDate extends HttpServlet {
+@WebServlet(urlPatterns = "/delete")
+public class ServletDelete extends HttpServlet {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     Model model = Model.getInstance();
 
     @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         StringBuffer bf = new StringBuffer();
         String line;
 
@@ -36,30 +37,16 @@ public class ServletUpDate extends HttpServlet {
 
         req.setCharacterEncoding("UTF-8");
 
-        int id = jObject.get("id").getAsInt();
-        User user = model.getUser(id);
-
         resp.setContentType("application/json;charset=utf-8");
         PrintWriter pw = resp.getWriter();
 
-        pw.print(gson.toJson("До обновления : "));
-        pw.print(gson.toJson(user));
-
-        if (user == null) {
+        int id = jObject.get("id").getAsInt();
+        User userById = model.getUser(id);
+        if (userById == null) {
             pw.print(gson.toJson("Такого пользователя нет"));
         } else {
-            if (jObject.get("name") != null) {
-                user.setName(jObject.get("name").getAsString());
-            }
-            if (jObject.get("surname") != null) {
-                user.setSurname(jObject.get("surname").getAsString());
-            }
-            if (jObject.get("salary") != null) {
-                user.setSalary(jObject.get("salary").getAsDouble());
-            }
+            model.getUserList().remove(id);
         }
-
-        pw.print(gson.toJson("После обновления : "));
-        pw.print(gson.toJson(user));
+        pw.print(gson.toJson(model.getUserList()));
     }
 }

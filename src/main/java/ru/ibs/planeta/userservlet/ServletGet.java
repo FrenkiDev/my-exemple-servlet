@@ -1,4 +1,4 @@
-package ru.ibs.planeta;
+package ru.ibs.planeta.userservlet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,18 +18,6 @@ import java.io.PrintWriter;
 public class ServletGet extends HttpServlet {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     Model model = Model.getInstance();
-
-    private final String htmlId = "<html>" +
-            "<h3>Доступные пользователи:</h3><br/>" +
-            "ID пользользователя: " +
-            "<ul>";
-    private final String htmlList = "<li>%s</li>" +
-            "<ul>" +
-            "<li> Имя: %s</li>" +
-            "<li> Фамилия: %s</li>" +
-            "<li> Зарплата: %s</li>" +
-            "</ul>";
-    private final String htmlGoHome = "</ul><a href=\"index.jsp\">Домой</a></html>";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
