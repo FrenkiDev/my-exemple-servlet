@@ -1,4 +1,4 @@
-package ru.ibs.planeta.springs;
+package ru.ibs.planeta.springs.pets;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

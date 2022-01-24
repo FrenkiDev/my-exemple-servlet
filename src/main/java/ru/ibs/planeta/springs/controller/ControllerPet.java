@@ -1,8 +1,8 @@
 package ru.ibs.planeta.springs.controller;
 
 import org.springframework.web.bind.annotation.*;
-import ru.ibs.planeta.springs.Pet;
-import ru.ibs.planeta.springs.PetModel;
+import ru.ibs.planeta.springs.pets.Pet;
+import ru.ibs.planeta.springs.pets.PetModel;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static java.lang.String.format;
 
 @RestController
-public class Controller {
+public class ControllerPet {
     private static final PetModel petModel = PetModel.getInstance();
     private static final AtomicInteger newId = new AtomicInteger(1);
     private static final String msg = "Поздравляем вы создари своего %sго питомца";

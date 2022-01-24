@@ -1,4 +1,4 @@
-package ru.ibs.planeta.springs;
+package ru.ibs.planeta.springs.pets;
 
 import java.io.Serializable;
 import java.util.HashMap;
