@@ -11,17 +11,8 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Delete-User-ID" enabled="true">
-        <stringProp name="CounterConfig.start">1</stringProp>
-        <stringProp name="CounterConfig.end">10</stringProp>
-        <stringProp name="CounterConfig.incr">1</stringProp>
-        <stringProp name="CounterConfig.name">userDeleteByID</stringProp>
-        <stringProp name="CounterConfig.format"></stringProp>
-        <boolProp name="CounterConfig.per_user">false</boolProp>
-      </CounterConfig>
-      <hashTree/>
       <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Get-User-ID" enabled="true">
-        <stringProp name="CounterConfig.start">-1</stringProp>
+        <stringProp name="CounterConfig.start">5</stringProp>
         <stringProp name="CounterConfig.end">10</stringProp>
         <stringProp name="CounterConfig.incr">1</stringProp>
         <stringProp name="CounterConfig.name">userID</stringProp>
@@ -113,7 +104,7 @@ Make test last 1 minute (see Scheduler)</stringProp>
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
   &quot;id&quot;:1,&#xd;
-  &quot;salary&quot;: &quot;${userDeleteByID}00.99&quot;&#xd;
+  &quot;salary&quot;: &quot;${userID}00.99&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -141,7 +132,7 @@ Make test last 1 minute (see Scheduler)</stringProp>
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-&quot;id&quot;:${userDeleteByID}&#xd;
+&quot;id&quot;:${userID}&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
